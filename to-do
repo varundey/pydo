@@ -5,9 +5,13 @@ import sys
 import os.path
 import sqlite3
 import __main__ as main
+import getpass
+import messages
 
 # Global variables for DB
-db = sqlite3.connect('tasker.db')
+uid = getpass.getuser()
+db_path = "/home/"+uid+"/to-do/to-do.db"
+db = sqlite3.connect(db_path)
 db.text_factory = str
 cur = db.cursor()
 cur.execute('create table if not exists TODOLIST (id INTEGER PRIMARY KEY, ToDo TEXT)')
@@ -20,48 +24,50 @@ class ToDo(object):
 	"""docstring for ToDoList"""
 	def __init__(self):
 		pass
-		
+	
+	def getLength(self):
+		length = cur.execute('SELECT count(*) FROM TODOLIST')
+		return length.fetchone()[0]
+
 	def addTask(self, id_no, task):
 		toDo=[(id_no, task),]
 		cur.executemany("insert into TODOLIST values (?, ?)", toDo)
 		db.commit()
-		print toDo[0][1]+" successfully added in your to-do list!"
+		print toDo[0][1]+ messages.success["added"]
 
 	def done(self):
-		if getLength()==0:
-			print "Umm.. You need to create a to-do first "\
-					"before marking them as done."
+		if self.getLength()==0:
+			print messages.error["done"]
 		else:
 			remove_id = raw_input("Enter id no of done item: ")
 			done_task = cur.execute("select ToDo from TODOLIST where id = (?)", remove_id).fetchone()[0]
 			cur.execute("delete from TODOLIST where id = (?)", remove_id)
 			db.commit()
-			print done_task+" successfully marked as done!"
+			print done_task+ messages.success["done"]
 
 
 	def view(self):
-		if getLength()==0:
-			print "No to-do list found. Create one with 'to-do'"
+		if self.getLength()==0:
+			print messages.error["view"]
 		else:
 			cur.execute('select * from TODOLIST')
 			results = cur.fetchall()
-			print "Your to-do list contains following tasks:"
+			print messages.info["view"]
 			for item in results:
 				print item
 
 	def throw(self):
-		print "Preparing to fold your list and throw it in bin....."
-		cur.execute("drop table TODOLIST")
-		# Amen!
-		print "Done!"
-
-def short():
-	return "Looks like your to-do list is empty. Try adding some items before doing this operation!"
+		if self.getLength()==0:
+			print messages.error["throw"]
+		else:
+			print messages.info["throw"]
+			cur.execute("drop table TODOLIST")
+			# Amen!
+			print "Done!"
 
 def does_not_match(no):
-
 	try:
-		if (no == str(cur.execute("select * from TODOLIST where id = (?)",no).fetchall()[0][0]) ) is True:
+		if (no == str(cur.execute("select * from TODOLIST where id = (?)",no).fetchone()[0]) ) is True:
 			return False
 	except Exception as e:
 		return True
@@ -71,7 +77,7 @@ def fetchTask(no):
 	task = task.fetchone()[0]
 	return task
 
-def main(toDo, length):
+def main(toDo):
 	
 	if arg_len==1 and sys.argv[0] == file_path:
 		
@@ -83,15 +89,14 @@ def main(toDo, length):
 				if task.strip() != "":					# Empty task... lazylord
 					toDo.addTask(id_no, task.strip())
 				else:
-					print "C'mon! Don't be that lazy..."
+					print messages.error["empty_task"]
 			
 			else:
-				print "Uh oh! Looks like the id you entered is assigned for " \
-				 		+fetchTask(id_no)+". Try giving a unique id."	
+				print messages.error["task_exists1"]\
+					 +fetchTask(id_no)+	messages.error["task_exists2"]
 		
 		except Exception as e:
-			print "That didn't work! Try entering in following format:"\
-					"\n1, water the plants"
+			print messages.error["wrong"]
 		
 		return											# Parting apart!
 
@@ -99,29 +104,23 @@ def main(toDo, length):
 	elif arg_len==2:	
 		'''	Other arguments '''
 		if (sys.argv)[1]=="--v" or (sys.argv)[1]=="-view":
-			toDo.view()
+			return toDo.view()
 
 		if (sys.argv)[1]=="--d" or (sys.argv)[1]=="-done":
-			toDo.done()
+			return toDo.done()
 
 		if (sys.argv)[1]=="--t" or (sys.argv)[1]=="-throw":
-			toDo.throw()
+			return toDo.throw()
 
 		else:
-			print "Confused? Worry not. Check 'todo --man'"	
+			print messages.error["args"]
 
 	else:
-		print "Confused? Worry not. Check 'todo --man'"	
-
-def getLength():
-	length = cur.execute('SELECT count(*) FROM TODOLIST')
-	return length.fetchall()[0][0]
+		print messages.error["args"]
 
 if __name__=="__main__":
 
 	# Make an object of our ToDoList Class
 	toDo = ToDo()
-	
-	length = getLength()	
 
-	main(toDo, length)
+	main(toDo)
