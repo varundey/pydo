@@ -8,10 +8,19 @@ import __main__ as main
 import getpass
 import messages
 
-# Global variables for DB
+# Get user id
 uid = getpass.getuser()
-db_path = "/home/"+uid+"/to-do/to-do.db"
-db = sqlite3.connect(db_path)
+db_path = "/home/"+uid+"/pydo/"
+
+# Create pydo directory for our DB to reside
+if not os.path.exists(db_path):
+	os.makedirs(db_path)
+
+# Our DB file
+dbfile = db_path+'pydo.db'
+
+# Global variables for DB
+db = sqlite3.connect(dbfile)
 db.text_factory = str
 cur = db.cursor()
 cur.execute('create table if not exists TODOLIST (id INTEGER PRIMARY KEY, ToDo TEXT)')
@@ -20,8 +29,8 @@ cur.execute('create table if not exists TODOLIST (id INTEGER PRIMARY KEY, ToDo T
 arg_len = len(sys.argv)
 file_path = main.__file__
 
-class ToDo(object):
-	"""docstring for ToDoList"""
+class PyDo(object):
+	"""docstring for to-do list"""
 	def __init__(self):
 		pass
 	
@@ -121,7 +130,7 @@ def main(toDo):
 
 if __name__=="__main__":
 
-	# Make an object of our ToDoList Class
-	toDo = ToDo()
+	# Make an object of our PyDo Class
+	toDo = PyDo()
 
 	main(toDo)
