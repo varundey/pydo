@@ -88,8 +88,7 @@ Thought of an awesome feature? Awesome! Just fork it, code it, push it. :smiley:
 ---
 ## To-do
 Coz even pydos need to-do (**pun intended**)
-
-- [x]Mark the to-do list done at once
+- [x] Mark the to-do list done at once
 - [ ] Make a pydo pip
 - [ ] Make a `pydo man` page
 - [x] Unit tests
