@@ -9,12 +9,12 @@ Your personal terminal based to-do manager built on python
 - [How to](#how-to-pydo)
 - [Motivation](#motivation)
 - [Contribute](#contribute)
-- [To-do](#to-do)
-- [Issues](#issues-bug)
+- [To-do](to-do)
+- [Issues](#issues)
 
 ---
 ## Demo
-
+[![asciicast](https://asciinema.org/a/6i0cg99rbpsvpjo4x1ldrr1qm.png)](https://asciinema.org/a/6i0cg99rbpsvpjo4x1ldrr1qm)
 ---
 ## Installation
 
@@ -28,9 +28,18 @@ $ cd ~/Downloads/pydo
 $ chmod +x pydo
 $ export PATH=$PATH:/home/[Your user name]/Downloads/pydo
 ```
-If you are not sure, you can find `Your user name` with 
+>If you are not sure, you can find `Your user name` with:
 ```sh
 $ whoami
+```
+- **Create a symbolic link**
+```sh
+$ cd ~/bin
+$ ln -s /home/[Your user name]/Downloads/pydo/pydo
+```
+> Make sure you have `bin` folder in your `home` directory. If not create it with:
+```sh
+$ mkdir ~/bin
 ```
 ---
 ## How to pydo?
@@ -75,7 +84,8 @@ Thought of an awesome feature? Awesome! Just fork it, code it, push it. :smiley:
 ---
 ## To-do
 Coz even pydos need to-do (**pun intended**)
-- [x] Mark the to-do list done at once
+
+- [x]Mark the to-do list done at once
 - [ ] Make a pydo pip
 - [ ] Make a `pydo man` page
 - [x] Unit tests
