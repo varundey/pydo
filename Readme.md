@@ -10,7 +10,7 @@ Your personal terminal based to-do manager built on python
 - [Motivation](#motivation)
 - [Contribute](#contribute)
 - [To-do](to-do)
-- [Issues](#issues)
+- [Issues](#issues-bug)
 
 ---
 ## Demo
@@ -32,6 +32,8 @@ $ export PATH=$PATH:/home/[Your user name]/Downloads/pydo
 ```sh
 $ whoami
 ```
+
+
 - **Create a symbolic link**
 ```sh
 $ cd ~/bin
