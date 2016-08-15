@@ -12,7 +12,7 @@ error={
 	"task_exists1":"Uh oh! Looks like the id you entered is assigned for ",
 	"task_exists1":". Try giving a unique id.",
 	"wrong":"That didn't work! Try entering in following format:\n1, water the plants",
-	"args":"Confused? Worry not. Check 'todo --man'"	
+	"args":"Confused? Check out the docs at https://github.com/varundey/pydo"
 }
 
 info={
