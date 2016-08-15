@@ -92,6 +92,7 @@ def main(toDo):
 					print messages.error["empty_task"]
 			
 			else:
+				''' Task with given id already exists'''
 				print messages.error["task_exists1"]\
 					 +fetchTask(id_no)+	messages.error["task_exists2"]
 		
@@ -101,7 +102,7 @@ def main(toDo):
 		return											# Parting apart!
 
 
-	elif arg_len==2:	
+	elif arg_len==2:
 		'''	Other arguments '''
 		if (sys.argv)[1]=="--v" or (sys.argv)[1]=="-view":
 			return toDo.view()
