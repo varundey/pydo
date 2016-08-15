@@ -1,61 +1,63 @@
-# to-do  :clipboard:
+# pydo  :clipboard:
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)]() [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://varundey.mit-license.org/) [![PyPI](https://img.shields.io/badge/python-2.7-blue.svg)]()
 
-Your personal terminal based to-do manager
+Your personal terminal based to-do manager built on python
 ***
 ## Index
 - [Demo](#demo)
 - [Installation](#installation)
-- [How to](#how)
+- [How to](#how-to-pydo)
 - [Motivation](#motivation)
 - [Contribute](#contribute)
 - [Issues](#issues)
+
 ---
 ## Demo
 
 ---
 ## Installation
-1.  ### Clone it
+
+ - **Clone it**
 ```sh
 $ git clone https://github.com/varundey/to-do.git
-$ cd ~/Downloads/to-do
+$ cd ~/Downloads/pydo
 ```
-2. #### Make our file executable and add a path
+ - **Make our file executable and add a path**
 ```sh
-$ chmod +x to-do
-$ export PATH=$PATH:/home/[Your user name]/Downloads/to-do
+$ chmod +x pydo
+$ export PATH=$PATH:/home/[Your user name]/Downloads/pydo
 ```
 If you are not sure, you can find `Your user name` with 
 ```sh
 $ whoami
 ```
 ---
-## How to to-do?
-- ### Add a task :memo:
+## How to pydo?
+ - **Add a task** :memo:
 Your task should contain a unique id for your task separated by a comma
 ```
-$ to-do
+$ pydo
 1,Feed the bunny
 Feed the bunny successfully added in your to-do list!
 ```
-- ### View your to-do list  :page_facing_up:
+ -  **View your to-do list**  :page_facing_up:
 To view all the items you have added to your list, add `--v` or `-view`
 ```sh
-$ to-do --v
+$ pydo --v
 Your to-do list contains following tasks:
 (1, 'Feed the bunny')
 ```
-- ### Mark an item as done :white_check_mark:
+ -  **Mark an item as done**  :white_check_mark:
 Pass the argument `--d` or `-done`
-```
-$ to-do -d
+```sh
+$ pydo -d
 Enter id no of done item: 1
 Feed the bunny successfully marked as done!
 ```
-- ### Throw the list :put_litter_in_its_place:
+- **Throw the list** :put_litter_in_its_place:
 Done with your to-do? Good. Now tear it up, roll it up real good, take aim and shoot it in the bin
 ```sh
-$ to-do --t
+$ pydo --t
 ```
 ---
 ## Motivation
