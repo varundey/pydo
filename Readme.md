@@ -43,6 +43,8 @@ $ ln -s /home/[Your user name]/Downloads/pydo/pydo
 ```sh
 $ mkdir ~/bin
 ```
+
+
 ---
 ## How to pydo?
 - **Add a task** :memo:
