@@ -9,7 +9,7 @@ Your personal terminal based to-do manager built on python
 - [How to](#how-to-pydo)
 - [Motivation](#motivation)
 - [Contribute](#contribute)
-- [To-do](to-do)
+- [To-do](#to-do)
 - [Issues](#issues-bug)
 
 ---
