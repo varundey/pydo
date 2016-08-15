@@ -9,8 +9,8 @@ Your personal terminal based to-do manager built on python
 - [How to](#how-to-pydo)
 - [Motivation](#motivation)
 - [Contribute](#contribute)
-- [To-do](to-do)
-- [Issues](#issues)
+- [To-do](#to-do)
+- [Issues](#issues-bug)
 
 ---
 ## Demo
@@ -75,8 +75,7 @@ Thought of an awesome feature? Awesome! Just fork it, code it, push it. :smiley:
 ---
 ## To-do
 Coz even pydos need to-do (**pun intended**)
-
-- [x]Mark the to-do list done at once
+- [x] Mark the to-do list done at once
 - [ ] Make a pydo pip
 - [ ] Make a `pydo man` page
 - [x] Unit tests
