@@ -67,7 +67,7 @@ Your to-do list contains following tasks:
 
 Pass the argument `--d` or `-done`
 ```sh
-$ pydo -d
+$ pydo --d
 Enter id no of done item: 1
 Feed the bunny successfully marked as done!
 ```
